@@ -1,0 +1,57 @@
+<div class="page-shell">
+  <header class="site-header">
+    <div class="brand"><span class="brand-mark">A</span><span>telier Glow</span></div>
+    <span class="header-note">Kozmetički salon & beauty studio</span>
+  </header>
+
+  <main class="content">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">PREGLED REZERVACIJA</p>
+        <h1>Vaše rezervacije<br><em>na jednom mestu.</em></h1>
+      </div>
+      <p class="intro-copy">Pregledajte rezervacije sačuvane u ovom pregledaču.</p>
+    </section>
+
+    <section class="booking-layout">
+      <div class="schedule-card">
+        <div class="card-heading">
+          <div><span class="section-kicker">LOKALNI DEMO</span><h2>Rezervacije</h2></div>
+          <a class="quick-add-button" href="rezervacija/index.html">＋ Dodaj termin</a>
+        </div>
+        <p *ngIf="storageError" class="storage-error" role="alert">{{ storageError }}</p>
+        <p *ngIf="!storageError" class="storage-note">Ovo je demo: podaci se čuvaju samo u ovom pregledaču.</p>
+        <div class="term-list">
+          <button *ngFor="let term of terms" class="term" (click)="selectTerm(term)" [attr.aria-pressed]="selectedTerm === term">
+            <span class="term-time">{{ term.time }}</span>
+            <span class="term-info"><strong>{{ term.service }}</strong><small>{{ term.clientName }} · {{ term.date | date:'dd.MM.yyyy' }}</small></span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+        <div *ngIf="!terms.length" class="empty-state schedule-empty">
+          <span class="empty-icon">◷</span>
+          <h2>{{ storageError ? 'Raspored nije dostupan' : 'Nema rezervacija' }}</h2>
+          <p>{{ storageError ? 'Proveri podešavanja skladišta pregledača.' : 'Dodate rezervacije prikazaće se ovde.' }}</p>
+        </div>
+      </div>
+
+      <aside class="details-card">
+        <ng-container *ngIf="selectedTerm; else emptyDetails">
+          <span class="section-kicker">DETALJI TERMINA</span>
+          <h2>{{ selectedTerm.service }}</h2>
+          <p class="selected-date">{{ selectedTerm.date | date:'dd.MM.yyyy' }} · {{ selectedTerm.time }} h</p>
+          <div class="details-list">
+            <div><span>Ime klijenta</span><strong>{{ selectedTerm.clientName || 'Nije uneseno' }}</strong></div>
+            <div><span>Telefon</span><strong>{{ selectedTerm.phone || 'Nije unet' }}</strong></div>
+            <div><span>Usluga</span><strong>{{ selectedTerm.service }}</strong></div>
+            <div><span>Terapeut</span><strong>{{ selectedTerm.therapist || 'Nije odabran' }}</strong></div>
+          </div>
+        </ng-container>
+        <ng-template #emptyDetails>
+          <div class="empty-state"><span class="empty-icon">◷</span><h2>Izaberi rezervaciju</h2><p>Izaberi rezervaciju da vidiš njene detalje.</p></div>
+        </ng-template>
+      </aside>
+    </section>
+  </main>
+  <footer>© 2026 Atelier Glow · Napravljeno za vašu lepšu rutinu</footer>
+</div>
