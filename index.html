@@ -772,10 +772,6 @@
             submitButton.focus();
         }
 
-        function go(id) {
-          document.querySelector('#' + id).scrollIntoView({ behavior: 'smooth' });
-        }
-
         function renderTimes(autoSelect = true) {
             if (!storageAvailable) {
                 renderUnavailableTimes();
@@ -932,7 +928,6 @@
             document.querySelectorAll('.service-card').forEach(card => card.classList.remove('selected'));
             choice.closest('.service-card').classList.add('selected');
             renderTimes();
-            go('rezervacija');
           });
         });
 

@@ -22,7 +22,7 @@
         <p *ngIf="storageError" class="storage-error" role="alert">{{ storageError }}</p>
         <p *ngIf="!storageError" class="storage-note">Ovo je demo: podaci se čuvaju samo u ovom pregledaču.</p>
         <div class="term-list">
-          <button *ngFor="let term of terms" class="term" (click)="selectTerm(term)" [attr.aria-pressed]="selectedTerm === term">
+          <button *ngFor="let term of terms" class="term" (click)="selectTerm(term)" [class.selected]="isSelected(term)" [attr.aria-pressed]="isSelected(term)">
             <span class="term-time">{{ term.time }}</span>
             <span class="term-info"><strong>{{ term.service }}</strong><small>{{ term.clientName }} · {{ term.date | date:'dd.MM.yyyy' }}</small></span>
             <span class="arrow">→</span>

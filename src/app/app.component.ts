@@ -80,6 +80,7 @@ function readBookings(): StorageReadResult {
 export class AppComponent {
   terms: Term[] = [];
   selectedTerm: Term | null = null;
+  private selectedTermKey: string | null = null;
   storageError: string | null = null;
 
   constructor() {
@@ -100,12 +101,31 @@ export class AppComponent {
 
     if (this.selectedTerm) {
       this.selectedTerm = this.terms.find(term =>
-        term.date === this.selectedTerm?.date && term.time === this.selectedTerm?.time
+        this.termKey(term) === this.selectedTermKey
       ) ?? null;
+      if (!this.selectedTerm) {
+        this.selectedTermKey = null;
+      }
     }
   }
 
   selectTerm(term: Term): void {
     this.selectedTerm = term;
+    this.selectedTermKey = this.termKey(term);
+  }
+
+  isSelected(term: Term): boolean {
+    return this.termKey(term) === this.selectedTermKey;
+  }
+
+  private termKey(term: Term): string {
+    return JSON.stringify([
+      term.date,
+      term.time,
+      term.service,
+      term.clientName,
+      term.phone,
+      term.therapist ?? ''
+    ]);
   }
 }
