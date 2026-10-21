@@ -41,5 +41,5 @@ h2 { font: 30px Georgia, serif; margin: 9px 0 0; }
 .empty-icon { color: #c98476; font: 52px Georgia, serif; }
 .empty-state p { max-width: 210px; line-height: 1.6; font-size: 14px; }
 footer { text-align: center; color: #80736d; font-size: 12px; padding: 20px; }
-@media (max-width: 760px) { .header-note { display: none; } .content { padding-top: 45px; } .intro { display: block; } h1 { font-size: 45px; } .intro-copy { margin-top: 25px; } .booking-layout { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .header-note { display: none; } .content { padding-top: 45px; } .intro { display: block; } h1 { font-size: 45px; } .intro-copy { margin-top: 25px; } .booking-layout { grid-template-columns: minmax(0, 1fr); justify-items: center; } .schedule-card, .details-card { width: 100%; max-width: 680px; } }
 @media (max-width: 500px) { .term { grid-template-columns: 55px 1fr 18px; gap: 8px; } .details-list div { flex-direction: column; gap: 5px; } .details-list strong { text-align: left; } .card-heading { align-items: flex-start; } }

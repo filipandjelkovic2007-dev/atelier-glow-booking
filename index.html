@@ -338,14 +338,19 @@
         }
 
         .about {
-            padding: 72px 0
+            padding: 72px 28px
         }
 
         .about-inner {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 45px;
             align-items: center
+        }
+
+        .about-inner > div:last-child {
+            width: 100%;
+            justify-self: end
         }
 
         .about h2 {
@@ -356,14 +361,19 @@
 
         .about p {
             max-width: 400px;
+            margin: 0 0 14px auto;
             color: var(--muted);
             line-height: 1.7;
-            font-size: 14px
+            font-size: 14px;
+            text-align: right
         }
 
         .stats {
-            display: flex;
-            gap: 45px
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            justify-items: end;
+            text-align: right
         }
 
         .stat strong {
@@ -458,8 +468,28 @@
                 display: block
             }
 
+            .about {
+                padding: 54px 18px
+            }
+
             .stats {
-                margin-top: 30px
+                margin-top: 30px;
+                gap: 12px;
+                justify-items: center;
+                text-align: center
+            }
+
+            .stat {
+                min-width: 0
+            }
+
+            .stat strong {
+                font-size: clamp(24px, 8vw, 32px)
+            }
+
+            .stat span {
+                display: block;
+                text-wrap: balance
             }
 
             .shell {
