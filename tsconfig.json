@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./out-tsc",
     "strict": true,
     "noImplicitOverride": true,
